@@ -1,0 +1,21 @@
+{
+  "name": "friendshell",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Consent-based remote terminal support tool.",
+  "type": "module",
+  "scripts": {
+    "start": "NODE_ENV=production node server/index.js",
+    "dev": "NODE_ENV=development node server/index.js",
+    "helper:build": "swift build --package-path Helper",
+    "helper:run": "swift run --package-path Helper Helper",
+    "helper:app": "swift build --package-path Helper -c release && rm -rf Helper.app && mkdir -p Helper.app/Contents/MacOS && cp Helper/.build/release/Helper Helper.app/Contents/MacOS/Helper && cp Helper/Info.plist Helper.app/Contents/Info.plist"
+  },
+  "dependencies": {
+    "@xterm/addon-fit": "^0.10.0",
+    "@xterm/xterm": "^5.5.0",
+    "express": "^4.19.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {}
+}

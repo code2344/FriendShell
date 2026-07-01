@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FriendShell Dashboard</title>
+    <link rel="stylesheet" href="/vendor/xterm/css/xterm.css" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="toolbar" aria-label="Connection controls">
+        <div>
+          <h1>FriendShell</h1>
+          <p id="status">Enter the helper's 6-digit session code.</p>
+        </div>
+        <div class="controls">
+          <form id="connectForm" class="connect-form">
+            <input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]{6}" placeholder="000000" aria-label="6-digit session code" required />
+            <button type="submit">Connect</button>
+            <button id="disconnect" type="button" disabled>Disconnect</button>
+          </form>
+          <form id="alertForm" class="alert-form">
+            <select id="alertKind" aria-label="Message style" disabled>
+              <option value="alert">Alert</option>
+              <option value="notification">Notification</option>
+            </select>
+            <input id="alertMessage" maxlength="500" placeholder="Message for helper" aria-label="Message for helper" disabled />
+            <button id="sendAlert" type="submit" disabled>Send</button>
+          </form>
+        </div>
+      </section>
+      <section class="terminal-wrap" aria-label="Remote terminal">
+        <section id="terminal" class="terminal"></section>
+        <form id="commandForm" class="command-form">
+          <input id="commandInput" autocomplete="off" spellcheck="false" placeholder="Type a command and press Enter" aria-label="Command input" disabled />
+          <button id="sendCommand" type="submit" disabled>Send</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="/vendor/xterm/lib/xterm.js"></script>
+    <script src="/vendor/xterm-fit/lib/addon-fit.js"></script>
+    <script src="/dashboard.js"></script>
+  </body>
+</html>
